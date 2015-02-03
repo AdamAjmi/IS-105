@@ -1,0 +1,14 @@
+Liste/oversikt over verdiene til romertallene og desimalene
+I er 1 også videre
+Konvertere alle romertallene til desimal.
+Liste alle elementer [element1, element2, element3]
+f.eks I er 1, IV er 4 osv.
+Konverte hver enkelt bokstav til dets desimalverdi ut i fra listen.
+Sjekke hvordan bokstavene er plassert i forhold til verdien for å legge sammen eller trekke fra.
+
+Funksjon som henter INPUT
+Må kunne liste ut alle funksjoner i modulen
+
+Testing av INPUT:
+Sjekke om INPUT fungerer (er tegn korrekte, er de desimal eller romertall?)
+Hvis man har et romertall/desimal som ikke kan direkte representeres gi feilmelding.
