@@ -15,6 +15,8 @@ gruppe = {  'student1': 'Adam Ajmi', \
 			'student3': 'Maria Sandø Andersen', \
             'student4': 'Stian Storbråten', \
             'student5': 'Øystein Traskjær', \
+            'student5': 'Erik Oskar Zetterquist', \
+            'student5': 'Vetle Horpestad', \
 }
 
 #
@@ -25,13 +27,12 @@ gruppe = {  'student1': 'Adam Ajmi', \
 #    Den skal skrive ut følgende når den brukes ascii_fugl
 print "-"
 print "       \/_"
-print "  \,   /( ,/"
-print "   \\\' ///"
+print "  \,_  /( ,/"
+print "   \__' ///"
 print "    \_ /_/"
 print "    (./"
 print "     '` "
 def ascii_bird():
-    pass
 # 
 #  Oppgave 2
 #    bitAnd - x&y
@@ -41,7 +42,8 @@ def ascii_bird():
 #					1 AND 1 gir 1, 1 AND 0 gir 0 og 0 AND 1 gir 0 => 100 binært
 #					er 4 desimalt. Antagelse: posisjonsbasert tallsystem og 
 #					den mest signifikante bit-en er lengst til venstre
-def bitAnd(x, y):
+
+def bitAnd(6 & 5):
     pass
 
 
@@ -50,16 +52,14 @@ def bitAnd(x, y):
 #    bitXor - x^y
 #    Eksempel: bitXor(4, 5) = 1
 #
-def bitXor(x, y):
-	pass
-
+def bitXor(4, 5):
+    pass
 #
 #  Oppgave 4
 #    bitOr - x|y
 #    Eksempel: bitOr(0, 1) = 1
 #
 def bitOr(x, y):
-	pass
 
 #
 #  Oppgave 5
@@ -157,5 +157,5 @@ def test():
 
 
 # Bruk denne funksjonen for å vise at alle testene er kjørt feilfritt
-#print test()
+print test()
 		
