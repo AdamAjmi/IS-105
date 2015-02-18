@@ -15,8 +15,8 @@ gruppe = {  'student1': 'Adam Ajmi', \
 			'student3': 'Maria Sandø Andersen', \
             'student4': 'Stian Storbråten', \
             'student5': 'Øystein Traskjær', \
-            'student5': 'Erik Oskar Zetterquist', \
-            'student5': 'Vetle Horpestad', \
+            'student6': 'Erik Oskar Zetterquist', \
+            'student7': 'Vetle Horpestad', \
 }
 
 #
@@ -33,8 +33,15 @@ gruppe = {  'student1': 'Adam Ajmi', \
 #    (./
 #     '` 
 def ascii_bird():
-	pass
-	
+	print """       \/_
+  \,   /( ,/
+   \\\\\\' ///
+    \_ /_/
+    (./
+     '`"""
+ascii_bird()
+# \ er en "escape character" og må derfor dobles for hver linje som skal skrives ut
+
 #  Oppgave 2
 #    bitAnd - x&y
 #	 Implementer funksjonen som gjør en "bitwise" AND operasjon (erstatt pass)
@@ -99,8 +106,13 @@ print "bitOr: %d" % (bitwiseOr)
 #	 Hvilke faktorer påvirker resultatet? Forklar.
 #
 def ascii8Bin(letter):
-    
-	pass
+    lettervar = ord(letter)
+    toBin = "{0:08b}".format(lettervar)
+    print(toBin)
+
+print "Letter in binary is:" 
+	
+
 
 # 
 #  Oppgave 6
@@ -115,8 +127,13 @@ def ascii8Bin(letter):
 def transferBin(string): 
 	l = list(string)
 	for c in l:
+		print "Binary representation for %s =" % c
+		ascii8Bin(c)
+		
+print transferBin("Python")
 		# skriv ut den binære representasjon av hvert tegn (bruk ascii8Bin funksjonen din)
-		print "Den binære representasjonen for %s" % c
+		# print "Den binære representasjonen for %s" % c
+
 
 #
 #  Oppgave 7
@@ -126,17 +143,31 @@ def transferBin(string):
 #					med 2 heksadesimale tegn
 #    Skriv selv inn tester ved å bruke assert i funksjonen test()
 #  
+def ascii2Hex(letter):
+	lettervar = ord(letter)
+	toHex = "{:02x}".format(lettervar)
+	print(toHex)
+
+
 def transferHex(string):
 	l = list(string)
 	for c in l:
-		print "Den heksadesimale representasjonen for %s" % c
+		print "Hexadecimal representation for %s" % c
+		ascii2Hex(c)
 
+print transferHex("Python")
 #
 # Oppgave 8
 # 		Implementer en funksjon unicodeBin, som kan behandle norske bokstaver
 # 		Kravspesifikasjon for denne funksjonen er den samme som for ascii8Bin funksjonen
-def unicodeBin(character):
-	pass	
+
+def unicodeBin(letter):
+    lettervar = ord(letter.decode("utf8"))
+    toBin = "{0:08b}".format(lettervar)
+    print(toBin)
+
+print "Letter Å in binary is:"
+unicodeBin("Å")  
 
 #
 # Oppgave 9
@@ -156,16 +187,26 @@ def unicodeBin(character):
 #	Kan dere skrive en test for denne funksjonen?
 #	Hvilke andre muligheter har man for å finne informasjon om maskinvare i GNU/Linux?
 #
-def printSysInfo():
-	pass
 
+def SystemInfo():
+    
+	mem = psutil.virtual_memory()
+	hdd = psutil.disk_partitions()
+	cpu = psutil.cpu_percent()
+	
+	print "Memory info: " + str(mem) 
+	print "HDD info: " + str(hdd)
+	print "CPU usage: " + str(cpu)
+	
+SystemInfo()
+pass
 
 def test():
 	assert bitAnd(6, 5) == 4
 	assert bitXor(4, 5) == 1
 	assert bitOr(0, 1) == 1
-	# assert ascii8Bin('a') == '01100001'
-	# assert ascii8Bin('A') == '01000001'
+	# assert ascii8Bin('a') == 01100001
+	# assert ascii8Bin('A') == 01000001
 	# Skriv her inn passende tester for tarnsferBin og transferHex funksjoner
 	# fra oppgavene 6 og 7
 	# assert unicodeBin('å') == '11100101'
@@ -175,4 +216,3 @@ def test():
 
 # Bruk denne funksjonen for å vise at alle testene er kjørt feilfritt
 print test()
-		
