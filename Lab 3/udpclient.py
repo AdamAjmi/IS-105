@@ -1,12 +1,21 @@
+# -*- coding: latin-1 -*-
+
 from socket import *
 
-s_address = '127.0.0.1'
+s_address = 'localhost'
 s_port = 50007
 c_socket = socket(AF_INET, SOCK_DGRAM)
 
-message_lower = raw_input('Type in a lower-case message to be converted to upper-case:')
-c_socket.sendto(message_lower,(s_address, s_port))
-uppercase_message, s_address = c_socket.recvfrom(4096)
-print uppercase_message
-
-ct_socket.close()
+while 1:  
+    
+    roman_num = raw_input('Roman number to be converted to an arabic number:')
+    c_socket.sendto(roman_num, (s_address, s_port))
+    fromRoman, s_address = c_socket.recvfrom(4096)
+    print fromRoman
+    
+    arab_num = raw_input('Arabic number to be converted to roman:')
+    c_socket.sendto(arab_num, (s_address, s_port))
+    fromArab, s_address = c_socket.recvfrom(4096)
+    print fromArab
+    
+c_socket.close()
