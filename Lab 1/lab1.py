@@ -145,7 +145,13 @@ def unicodeBin(letter):
     #Decoder stringen etter codec definert i parantes.
     return "{0:08b}".format(lettervar) 
 
-#
+print "The unicodeletter 'Ø' in binary:"
+print unicodeBin('Ø')
+print ""
+
+#Får ikke innstallert psutils!
+#Noen andre må ta for seg oppgave 9.
+
 # Oppgave 9
 #   Studer python module psutils (må være obs på versjon)
 #   Prøv å finne ut hvordan du kan finne ut og skrive ut følgende informasjon om din 
@@ -163,9 +169,6 @@ def unicodeBin(letter):
 #   Kan dere skrive en test for denne funksjonen?
 #   Hvilke andre muligheter har man for å finne informasjon om maskinvare i GNU/Linux?
 #
-
-#Får ikke innstallert psutils!
-#Noen andre må ta for seg oppgave 9.
 
 #def printSysInfo():
 #printSysInfo()

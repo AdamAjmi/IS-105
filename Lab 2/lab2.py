@@ -13,7 +13,7 @@ def roman_to_int(roman):
               #hvis vi velger å ikke godta ukorrekte romerske tall som f.eks 
               #DCCCCLX (960) fordi det burde blitt skrevet CMLX
     for r, i in enumerate(roman):
-        #print "r = {}, i = {}, int = {}, minus = {}".format(r, i, int, minus)
+        #print "r = {}, i = {}, int = {}, minus = {}".format(r, i, int, minus) """debugging"""
         try:
             if roman_set[roman[r + 1]] > roman_set[i]:
                 minus = roman_set[i]
@@ -33,7 +33,7 @@ def int_to_roman(int):
     roman_set = OrderedDict(reversed(sorted(roman_set.items(), key=lambda t: t[1])))
     roman = ''
     for r, i in roman_set.items():   #For hvert sett med tilhørende romerske tall og integere:
-           print "r = {}, i = {}, int = {}, roman = {}".format(r, i, int, roman)
+           #print "r = {}, i = {}, int = {}, roman = {}".format(r, i, int, roman) """debugging"""
            while int >= i: #Når input-verdi er større enn en integerverdi i roman_set
                 int -= i   #fjernes integerverdien fra input-verdi"""
                 roman += r   #og det samsvarende romerske tallet legges inn i en variabel
