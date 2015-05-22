@@ -23,7 +23,8 @@ while 1:
     #Den andre variabelen lagrer sendes addresse slik at en melding
     #kan returneres senere.
     uni_upper = uni_lower.decode('utf-8').upper()
-    s_socket.sendto(uni_upper, c_address)
+    uni_full = uni_upper.encode('utf-8')
+    s_socket.sendto(uni_full, c_address)
     #Sender svar tilbake til klientens addresse.
     
     roman_num, c_address = s_socket.recvfrom(4096)

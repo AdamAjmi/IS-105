@@ -15,9 +15,9 @@ while 1:
     uni_lower = raw_input('Lower-case unicode letter to be capitalized: ')
     c_socket.sendto(uni_lower, (s_address, s_port))
     #Sender variabel til server.
-    uni_upper, s_address = c_socket.recvfrom(4096)
+    uni_full, s_address = c_socket.recvfrom(4096)
     #socket for å motta fange opp meldinger fra server.
-    print uni_upper
+    print uni_full
     
     roman_num = raw_input('Roman number to be converted to an arabic number:')
     c_socket.sendto(roman_num, (s_address, s_port))
