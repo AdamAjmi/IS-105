@@ -8,7 +8,7 @@
 #
 #
 import sys
-#import psutil
+import psutil
 #Import importerer og instansierer andre moduler slik at modulens funksjoner
 #kan tas i bruk uten at koden må stå i denne filen.
 
@@ -115,7 +115,7 @@ print "Every letter in the word Python in binary:"
 print transferBin("Python")
 print ""
 
-#  Oppgave 7
+# Oppgave 7
 def ascii2Hex(letter):
     lettervar = ord(letter)
     return "{:02x}".format(lettervar)
@@ -145,37 +145,33 @@ def unicodeBin(letter):
     #Decoder stringen etter codec definert i parantes.
     return "{0:08b}".format(lettervar) 
 
-print "The unicodeletter 'Ø' in binary:"
-print unicodeBin('Ø')
+print "The letter 'Ø' represented in binary:"
+print unicodeBin("Ø")
 print ""
 
-#Får ikke innstallert psutils!
-#Noen andre må ta for seg oppgave 9.
-
 # Oppgave 9
-#   Studer python module psutils (må være obs på versjon)
-#   Prøv å finne ut hvordan du kan finne ut og skrive ut følgende informasjon om din 
-#   datamaskin-node:
-#
-#           Brand and model
-#           Hard drive capacity
-#           Amount of RAM
-#           Model and speed of CPU
-#           Display resolution and size
-#           Operating system
-#   
-#   Forklar hvorfor man kan / ikke kan finne denne informasjon vha. psutil modulen.
-#   Skriv en funksjon printSysInfo som skriver ut den informasjon som psutil kan finne.
-#   Kan dere skrive en test for denne funksjonen?
-#   Hvilke andre muligheter har man for å finne informasjon om maskinvare i GNU/Linux?
-#
-
-#def printSysInfo():
-#printSysInfo()
-#pass
+def printSysInfo():
+     
+    mem = psutil.virtual_memory()
+    swapmem = psutil.swap_memory()
+    cpu = psutil.cpu_percent()
+    hdd = psutil.disk_partitions()
+    
+    print "--------------------------------------------------------------------"
+    print ""
+    print "Memory Info: " + str(mem)
+    print ""
+    print "Swap Memory Info: " + str(swapmem)
+    print ""
+    print "CPU Usage: " + str(cpu)
+    print ""
+    print "HDD Info: " + str(hdd)
+    print ""
+printSysInfo()
 
 def test():
     print "--------------------------------------------------------------------"
+    print ""
     print "Starter testing..."
     assert bitAnd(6, 5) == 4
     #Assert kjører en funksjon med gitte variabler og tester resultatet med en
