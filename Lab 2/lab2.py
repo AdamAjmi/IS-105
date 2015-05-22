@@ -12,7 +12,7 @@ def roman_to_int(roman):
     minus = 0 #Denne variabelen er strengt tatt ikke nødvendig lenger
               #hvis vi velger å ikke godta ukorrekte romerske tall som f.eks 
               #DCCCCLX (960) fordi det burde blitt skrevet CMLX
-    for r, i in enumerate(roman): #r = romertall og i = integer i map roman_set
+    for r, i in enumerate(roman):
         #print "r = {}, i = {}, int = {}, minus = {}".format(r, i, int, minus)
         try:
             if roman_set[roman[r + 1]] > roman_set[i]:
@@ -32,14 +32,16 @@ def int_to_roman(int):
     global roman_set
     roman_set = OrderedDict(reversed(sorted(roman_set.items(), key=lambda t: t[1])))
     roman = ''
-    for r, i in roman_set.items():   #For hvert sett med tilhrende romerske tall og integere:
-           #print "r = {}, i = {}, int = {}, roman = {}".format(r, i, int, roman)
-           while int >= i: #Nr input-verdi er strre enn en integerverdi i roman_set
-                int -= i   #fjernes integerverdien fra input-verdi
+    for r, i in roman_set.items():   #For hvert sett med tilhørende romerske tall og integere:
+           print "r = {}, i = {}, int = {}, roman = {}".format(r, i, int, roman)
+           while int >= i: #Når input-verdi er større enn en integerverdi i roman_set
+                int -= i   #fjernes integerverdien fra input-verdi"""
                 roman += r   #og det samsvarende romerske tallet legges inn i en variabel
     return roman
     
 def roman_add(roman1, roman2):
+    roman1 = roman1.upper()
+    roman2 = roman2.upper()
     roman1 = roman_expand(roman1)
     roman2 = roman_expand(roman2)
     combined_roman = roman1 + roman2
@@ -47,9 +49,11 @@ def roman_add(roman1, roman2):
     temp_roman = ''
     temp_roman += combined_roman
     global roman_symbols
-    
+    """Vi sorterer den kombinerte romerske numeralen etter
+        en liste med romerske symboler i rekkefølge"""
     listed_roman = sorted(temp_roman, key=roman_symbols.index)
     new_roman = ''.join(listed_roman)
+    
     new_roman = roman_combine(new_roman)
     
     return new_roman
@@ -57,7 +61,8 @@ def roman_add(roman1, roman2):
     
 
 def roman_expand(num):
-    
+    """Vi bruker funksjonen roman_expand til å bytte ut alle negative
+    verdier fra begge numeralene med utvidete positive verdier """
     num = num.replace('CM', 'DCCCC')
     num = num.replace('CD', 'CCCC')
     num = num.replace('XC', 'LXXXX')
@@ -67,7 +72,8 @@ def roman_expand(num):
     return num
 
 def roman_combine(num):
-
+    """Vi bruker funksjonen roman_combine til å trekke sammen
+        det endelige numeralet, også med negative verdier"""
     num = num.replace('IIIII', 'V')
     num = num.replace('VV', 'X')
     num = num.replace('XXXXX', 'L')
