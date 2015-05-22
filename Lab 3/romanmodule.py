@@ -1,26 +1,26 @@
 # -*- coding: utf-8 -*-
 from collections import OrderedDict
- 
-romans = {'M':1000, 'CM':900, 'D':500, 'CD':400, 'C':100, 'XC':90, 'L':50, 'XL':40, 'X':10, 'IX':9, 'V':5, 'IV':4, 'I':1}
-romans = OrderedDict(sorted(romans.items(), key=lambda t: t[1]))
+roman_symbols = 'MDCLXVI' 
+roman_set = {'M':1000, 'CM':900, 'D':500, 'CD':400, 'C':100, 'XC':90, 'L':50, 'XL':40, 'X':10, 'IX':9, 'V':5, 'IV':4, 'I':1}
+roman_set = OrderedDict(sorted(roman_set.items(), key=lambda t: t[1]))
 
 
 def roman_to_int(roman):
-    global romans
+    global roman_set
     roman = roman.upper()
     integ = 0
     minus = 0 #Denne variabelen er strengt tatt ikke nødvendig lenger
               #hvis vi velger å ikke godta ukorrekte romerske tall som f.eks 
               #DCCCCLX (960) fordi det burde blitt skrevet CMLX
-    for r, i in enumerate(roman): #r = romertall og i = integer i map romans
+    for r, i in enumerate(roman): #r = romertall og i = integer i map roman_set
         #print "r = {}, i = {}, int = {}, minus = {}".format(r, i, int, minus)
         try:
-            if romans[roman[r + 1]] > romans[i]:
-                minus = romans[i]
+            if roman_set[roman[r + 1]] > roman_set[i]:
+                minus = roman_set[i]
                 continue
         except IndexError:
             pass
-        integ += (romans[i] - minus)
+        integ += (roman_set[i] - minus)
         minus = 0
     if not (0 < integ < 5000):
         raise ValueError("Number is likely out of range. The roman numeral must have a value between 1 and 4999.")
@@ -29,12 +29,12 @@ def roman_to_int(roman):
 def int_to_roman(int):
     if not (0 < int < 5000):
         raise ValueError("Number is out of range. The roman numeral must have a value between 1 and 4999.")
-    global romans
-    romans = OrderedDict(reversed(sorted(romans.items(), key=lambda t: t[1])))
+    global roman_set
+    roman_set = OrderedDict(reversed(sorted(roman_set.items(), key=lambda t: t[1])))
     roman = ''
-    for r, i in romans.items():   #For hvert sett med tilhrende romerske tall og integere:
+    for r, i in roman_set.items():   #For hvert sett med tilhrende romerske tall og integere:
            #print "r = {}, i = {}, int = {}, roman = {}".format(r, i, int, roman)
-           while int >= i: #Nr input-verdi er strre enn en integerverdi i romans
+           while int >= i: #Nr input-verdi er strre enn en integerverdi i roman_set
                 int -= i   #fjernes integerverdien fra input-verdi
                 roman += r   #og det samsvarende romerske tallet legges inn i en variabel
     return roman
@@ -42,14 +42,14 @@ def int_to_roman(int):
 def roman_add(roman1, roman2):
     roman1 = roman_expand(roman1)
     roman2 = roman_expand(roman2)
-    
     combined_roman = roman1 + roman2
+    
     temp_roman = ''
     temp_roman += combined_roman
-    roman_list = "MDCLXVI"
-    sorted_roman = sorted(temp_roman, key=roman_list.index)
+    global roman_symbols
     
-    new_roman = ''.join(sorted_roman)
+    listed_roman = sorted(temp_roman, key=roman_symbols.index)
+    new_roman = ''.join(listed_roman)
     new_roman = roman_combine(new_roman)
     
     return new_roman
